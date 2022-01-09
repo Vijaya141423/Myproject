@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {Container,Cards,UserContent,Image,UserDetails,UserName,Description,CardContent,Title,Desc,UserInteraction,Count ,Bottom,Like1,Comment1,Share1,} from "./Cardstyles.js";
 import Data from "./Userdata.json";
+import Comment from "./Comment";
 function Card() {
   const [num, setNum] = useState(109);
+  const [Commentup, setComment] = useState(false);
   const val = (incNum) => {
     setNum((prevState) => prevState + incNum);
   };
@@ -57,7 +59,16 @@ function Card() {
           </Count>
           <Bottom>
             <Like1 onClick={() => val(1)}>Like</Like1>
-            <Comment1 onClick={() => val(1)}>Comment</Comment1>
+            <Comment1 onClick={() => val(1), () => setComment(true))}}>Comment</Comment1>
+            <Comment trigger={Commentup} setTrigger={setComment}>
+              <h2>Leave a Comment</h2>
+              <Cform>
+                <Clabel>
+                  <Cinput type="text" placeholder="Write Your Comment..." />
+                </Clabel>
+                <Cinputb type="submit" value="Submit" />
+              </Cform>
+             </Comment>
             <Share1 onClick={() => val(1)}>Share</Share1>
           </Bottom>
         </UserInteraction>
@@ -67,3 +78,15 @@ function Card() {
 }
 
 export default Card;
+const Cform = styled.form``;
+const Clabel = styled.label`
+  width: 100%;
+`;
+const Cinput = styled.input`
+  height: 100px;
+  width: 100%;
+  border: 2px solid #333;
+`;
+const Cinputb = styled.input`
+  width: 100px;
+`;
