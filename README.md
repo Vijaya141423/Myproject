@@ -1,5 +1,5 @@
 Table of Contents:
-Software Requirements
+Software Requirements,
 Dependencies
 
 Software Requirements
